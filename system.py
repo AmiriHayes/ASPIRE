@@ -1,6 +1,6 @@
 # ASPIRE: Transportation Scoring Metric
 # Created By: Amiri Hayes
-# Last Updated: 12/13/2023
+# Last Updated: 8/9/2024
 # Contact: akh5 @ njit.edu
 # Read The Paper: tinyurl.com/ASPIRE4Transportation
 
