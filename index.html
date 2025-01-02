@@ -1,0 +1,235 @@
+<!-- this file is for the demo website: www.aspirefortransport.org -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspire for Transport</title>
+    <style>
+        body {
+            background: darkgray;
+            display: flex; 
+            justify-content: center;
+        }
+        .body {
+            width: 85vw;
+            height: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            background-color:  #FAF9F6;
+            color: #343d46;
+            font-family: "Trebuchet MS", Tahoma, sans-serif;
+            border-radius: 10px;
+        }
+        .header {
+            font-size: 30px;
+            font-weight: bolder;
+            margin: 15px;
+            text-shadow: 0.25px 0.5px 1px #343d46;
+        }
+        .links {
+            display: flex;
+            justify-content: space-around;
+            width: 40%;
+            margin: 5px
+        }
+        .links a {
+            background-color: #343d46;
+            flex-basis: 45%;
+            text-decoration: none;
+            color: #FAF9F6;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+        .links a:hover {
+            background-color: darkgray;
+        }
+        .abstract {
+            width: 60vw;
+            border: 3px solid;
+            padding: 20px;
+            margin-top: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .form-container {
+            width: 50vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .form-left, .form-right {
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form-right {
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .form-left input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        .form-left button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #343d46;
+            color: #FAF9F6;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-left button:hover {
+            background-color: darkgray;
+        }
+        input::placeholder { 
+            text-align: center; 
+            font-family: "Trebuchet MS", Tahoma, sans-serif;
+        }
+        .output {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .results { 
+            display: none; 
+            justify-content: space-around; 
+            width: 70vw; 
+            margin: 20px 20px 40px 20px;
+        } 
+        .map, .number { 
+            width: 45%; 
+            height: 200px; 
+            border: 2px solid #343d46; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            box-sizing: border-box; 
+            background-color: #FAF9F6;
+            border-radius: 5px;
+        }
+        .footer {
+            width: 85vw;
+            background-color: #343d46;
+            color: #FAF9F6;
+            text-align: center;
+            bottom: 0;
+            padding: 10px 0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        @media (max-width: 500px) {
+            .header {
+                font-size: 24px;
+            }
+            .links {
+                flex-direction: column;
+            }
+            .links a { 
+                margin: 10px 0;
+            }
+            .abstract {
+                width: 80vw;
+            }
+            .form-container {
+                width: 80vw;
+            }
+            .form-left {
+                width: 45vw;
+            }
+            .form-right {
+                width: 38vw;
+            }
+            .dissapear {
+                display: none;
+            }
+            .results {
+                flex-direction: column;
+            }
+            .map {
+                width: 100%; margin-bottom: 20px;
+            }
+            .number {
+                width: 100%; margin-bottom: 20px;
+            }
+            .body {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <div class="header">Aspire for Transport Demo</div>
+    <div class="links">
+        <a href="https://www.amirihayes.com">Research Paper</a>
+        <a href="https://www.amirihayes.com">Amiri Hayes</a>
+    </div>
+    <div class="abstract">
+        <div><b>The Main Idea & How ASPIRE works:</b></div><br>
+        <div> 
+            ASPIRE uses a deep learning model and city-specific data to score urban walkability, 
+            evaluating infrastructure impacts on climate goals and guiding sustainable urban planning.
+            Note that for the demo, the mathematical model will collect a miscellany of information 
+            about your city and then run this data through a machine learning model.
+        </div><br>
+        <div>
+            <b>NOTE: Due to the amount of data processed and time to run the model, <br> it may take from 10 - 30 seconds
+            for your results to appear! </b>
+        </div>
+    </div>
+    <div class="form-container">
+        <div class="form-right">
+            <p>To demo ASPIRE, <br> enter the name of <br class="dissapear"> any city in the US: </p>
+        </div>
+        <div class="form-left">
+            <input type="text" id="neighborhood" name="neighborhood" placeholder="   Neighborhood (Optional)">
+            <input type="text" id="city" name="city" placeholder= "   City (Required)">
+            <input type="text" id="state" name="state" placeholder = "   State (Required)">
+            <button type="button" onclick="displayCityName()">Enter</button>
+        </div>
+    </div>
+    <div id="output" class="output"></div>
+    <div class="results"> 
+        <div class="map">Map Placeholder</div> 
+        <div class="number">Number Placeholder</div> 
+    </div>
+    <div class="footer">made by Amiri Hayes</div>
+    <script>
+        function displayCityName() {
+            const neighborhood = document.getElementById('neighborhood').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            
+            // Display the Results Items
+            document.getElementById('output').textContent = ['Results:', neighborhood, city, state].filter(Boolean).join(', ');;
+            document.querySelector('.results').style.display = 'flex';
+
+
+
+            // Reposition body height & footer
+            const bodyElement = document.querySelector('.body');
+            bodyElement.style.height = 'auto';
+            bodyElement.style.height = bodyElement.scrollHeight + 'px';
+            const footerElement = document.querySelector('.footer');
+            footerElement.style.position = 'relative'; 
+        }
+    </script>
+</div>
+</body>
+
+</html>
