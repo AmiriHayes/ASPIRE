@@ -1,6 +1,4 @@
-base64
 geopy
-io
 flask
 flask-cors
 gunicorn
