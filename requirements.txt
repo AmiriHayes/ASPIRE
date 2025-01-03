@@ -1,4 +1,6 @@
-osmnx
+geopy
 flask
 flask-cors
 gunicorn
+json
+osmnx
