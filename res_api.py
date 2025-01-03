@@ -4,7 +4,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 app = Flask(__name__)
 
-import json
 import osmnx as ox
 from geopy import geocoders
 G = geocoders.GeoNames(username='amiri_hayes_')
@@ -23,7 +22,7 @@ def process_data():
 
     nodes, edges = ox.graph_to_gdfs(g) 
     edges = edges[["geometry"]]
-    geojson_img = json.loads(edges.to_json())
+    geojson_img = edges.to_json()
 
     # processing logic:
     geojson_obj = geojson_img
